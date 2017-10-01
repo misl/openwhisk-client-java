@@ -201,7 +201,7 @@
                         "name": "packageName",
                         "in": "path",
                         "description": "Name of package the action belongs to",
-                        "required": true,
+                        "required": false,
                         "type": "string"
                     },
                     {
@@ -252,7 +252,7 @@
                         "name": "packageName",
                         "in": "path",
                         "description": "Name of package the action belongs to",
-                        "required": true,
+                        "required": false,
                         "type": "string"
                     },
                     {
@@ -329,7 +329,7 @@
                         "name": "packageName",
                         "in": "path",
                         "description": "Name of package the action belongs to",
-                        "required": true,
+                        "required": false,
                         "type": "string"
                     },
                     {
@@ -374,7 +374,7 @@
                         "name": "packageName",
                         "in": "path",
                         "description": "Name of package the action belongs to",
-                        "required": true,
+                        "required": false,
                         "type": "string"
                     },
                     {
