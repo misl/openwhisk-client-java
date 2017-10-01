@@ -403,7 +403,6 @@
                         }
                     },
                     "202": {
-                        "description": "Activation request accepted",
                         "$ref": "#/responses/AcceptedActivation"
                     },
                     "401": {
@@ -1392,6 +1391,7 @@
                     "type": "string"
                 },
                 "value": {
+                    "type": "object",
                     "description": "Any JSON value"
                 }
             }
