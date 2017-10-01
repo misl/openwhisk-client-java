@@ -33,7 +33,7 @@ public class SimpleTest {
     final KeyValue parameters = new KeyValue();
     parameters.key( "params" );
     parameters.setValue( "hallo" );
-    invokeAction( openwhisk, namespace, "traeckit.tenants/debug", parameters );
+    invokeAction( openwhisk, namespace, "traeckit.tenants", "debug", parameters );
   }
 
   // --------------------------------------------------------------------------
@@ -99,8 +99,8 @@ public class SimpleTest {
     } );
   }
 
-  private static void invokeAction( final Openwhisk openwhisk, final String namespace, final String actionName, final KeyValue parameters ) {
-    Call<Activation> response = openwhisk.actions().invokeAction( namespace, actionName, parameters, null, null, null);
+  private static void invokeAction( final Openwhisk openwhisk, final String namespace, final String packageName, final String actionName, final KeyValue parameters ) {
+    Call<Activation> response = openwhisk.actions().invokeAction( namespace, packageName, actionName, parameters, null, null, null);
     response.enqueue( new Callback<Activation>() {
 
       @Override

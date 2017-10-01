@@ -181,7 +181,7 @@
                 }
             }
         },
-        "/namespaces/{namespace}/actions/{actionName}": {
+        "/namespaces/{namespace}/actions/{packageName}/{actionName}": {
             "get": {
                 "tags": [
                     "Actions"
@@ -194,6 +194,13 @@
                         "name": "namespace",
                         "in": "path",
                         "description": "The entity namespace",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "packageName",
+                        "in": "path",
+                        "description": "Name of package the action belongs to",
                         "required": true,
                         "type": "string"
                     },
@@ -238,6 +245,13 @@
                         "name": "namespace",
                         "in": "path",
                         "description": "The entity namespace",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "packageName",
+                        "in": "path",
+                        "description": "Name of package the action belongs to",
                         "required": true,
                         "type": "string"
                     },
@@ -312,6 +326,13 @@
                         "type": "string"
                     },
                     {
+                        "name": "packageName",
+                        "in": "path",
+                        "description": "Name of package the action belongs to",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "name": "actionName",
                         "in": "path",
                         "description": "Name of action",
@@ -346,6 +367,13 @@
                         "name": "namespace",
                         "in": "path",
                         "description": "The entity namespace",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "packageName",
+                        "in": "path",
+                        "description": "Name of package the action belongs to",
                         "required": true,
                         "type": "string"
                     },
