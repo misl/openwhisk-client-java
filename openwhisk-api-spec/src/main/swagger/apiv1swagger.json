@@ -1392,7 +1392,7 @@
                     "200": {
                         "description": "Return output",
                         "schema": {
-                            "$ref": "#/definitions/ActivationResult"
+                            "$ref": "#/definitions/ActivationResponse"
                         }
                     },
                     "401": {
@@ -1929,8 +1929,8 @@
                     "type": "string",
                     "description": "Time when the activation completed"
                 },
-                "result": {
-                    "$ref": "#/definitions/ActivationResult"
+                "response": {
+                    "$ref": "#/definitions/ActivationResponse"
                 },
                 "logs": {
                     "type": "array",
@@ -2000,14 +2000,19 @@
                 }
             }
         },
-        "ActivationResult": {
+        "ActivationResponse": {
             "properties": {
+                "result": {
+                    "type": "object",
+                    "description": "Any JSON value"
+                },
+                "success": {
+                   "type": "boolean",
+                    "description": "Indicates whether the activation was successful"
+                },
                 "status": {
                     "type": "string",
                     "description": "Exit status of the activation"
-                },
-                "value": {
-                    "description": "The return value from the activation"
                 }
             }
         },
