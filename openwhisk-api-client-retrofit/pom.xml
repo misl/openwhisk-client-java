@@ -23,6 +23,7 @@
 
   <properties>
     <retrofit-version>2.3.0</retrofit-version>
+    <okhttp3-logging-version>3.9.1</okhttp3-logging-version>
     <jodatime-version>2.9.9</jodatime-version>
     <oltu-version>1.0.1</oltu-version>
   </properties>
@@ -52,6 +53,11 @@
       <groupId>com.squareup.retrofit2</groupId>
       <artifactId>converter-scalars</artifactId>
       <version>${retrofit-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>logging-interceptor</artifactId>
+      <version>${okhttp3-logging-version}</version>
     </dependency>
     <dependency>
       <groupId>joda-time</groupId>

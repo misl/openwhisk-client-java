@@ -20,6 +20,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
+import okhttp3.logging.HttpLoggingInterceptor;
+import okhttp3.logging.HttpLoggingInterceptor.Level;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -97,7 +99,8 @@ public class Openwhisk {
 
     String baseUrl = hostUrl + "/api/v1/";
 
-    final OkHttpClient okHttpClient = new OkHttpClient().newBuilder().addInterceptor( new Interceptor() {
+    final OkHttpClient.Builder okHttpClient = new OkHttpClient.Builder();  
+    okHttpClient.addInterceptor( new Interceptor() {
       @Override
       public okhttp3.Response intercept( Chain chain ) throws IOException {
         Request originalRequest = chain.request();
@@ -108,10 +111,16 @@ public class Openwhisk {
         Request newRequest = builder.build();
         return chain.proceed( newRequest );
       }
-    } ).build();
+    } );
+    
+    // Add logging interceptor
+    // TODO: make it optional
+    final HttpLoggingInterceptor logging = new HttpLoggingInterceptor();  
+    logging.setLevel(Level.BODY);
+    okHttpClient.addInterceptor(logging);
 
     retrofit = new Retrofit.Builder().baseUrl( baseUrl )
-        .client( okHttpClient )
+        .client( okHttpClient.build() )
         .addConverterFactory( ScalarsConverterFactory.create() )
         .addConverterFactory( GsonCustomConverterFactory.create( gson ) ).build();
   }
