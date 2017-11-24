@@ -19,6 +19,7 @@ public class SimpleTest {
   public static void main( String[] args ) {
     // Either set this config directly...
     String hostUrl = "https://openwhisk.ng.bluemix.net:443";
+    //hostUrl = "http://openwhisk.ng.bluemix.net";
     String authName = "YOUR-AUTHNAME";
     String apiKey = "YOUR-APIKEY";
     String namespace = "YOUR-NAMESPACE";
@@ -100,19 +101,27 @@ public class SimpleTest {
   }
 
   private static void invokeAction( final Openwhisk openwhisk, final String namespace, final String packageName, final String actionName, final KeyValue parameters ) {
-    Call<Activation> response = openwhisk.actions().invokeAction( namespace, packageName, actionName, parameters, null, null, null);
-    response.enqueue( new Callback<Activation>() {
-
-      @Override
-      public void onResponse( Call<Activation> call, Response<Activation> response ) {
-        System.out.println( "activation:" );
-        System.out.println( response.toString() );
-      }
-
-      @Override
-      public void onFailure( Call<Activation> call, Throwable t ) {
-        t.printStackTrace();
-      }
-    } );
+    Call<Activation> response = openwhisk.actions().invokeAction( namespace, packageName, actionName, parameters, "true", "false", null);
+    try {
+      final Response<Activation> activation = response.execute();
+      System.out.println( "activation:" );
+      System.out.println( activation.toString() );
+      System.out.println( activation.body() );
+    } catch (final Exception exception) {
+      System.out.println( exception.getLocalizedMessage() );
+    }
+//    response.enqueue( new Callback<Activation>() {
+//
+//      @Override
+//      public void onResponse( Call<Activation> call, Response<Activation> response ) {
+//        System.out.println( "activation:" );
+//        System.out.println( response.toString() );
+//      }
+//
+//      @Override
+//      public void onFailure( Call<Activation> call, Throwable t ) {
+//        t.printStackTrace();
+//      }
+//    } );
   }
 }
